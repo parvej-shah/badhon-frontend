@@ -1,10 +1,13 @@
 import Lottie from "lottie-react";
 import { useForm } from "react-hook-form";
 import registerAnimation from "../assets/images/registerAnimation.json";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import OTPVerification from "./OTPVarification";
+import RegistrationForm from "./RegistrationForm";
 export default function RegisterPage() {
+  const [step, setStep] = useState(1);
   const {
     register,
     handleSubmit,
@@ -30,7 +33,9 @@ export default function RegisterPage() {
           </div>
           <div className="card bg-bgStart w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-              <h1 className="text-4xl font-bold text-primary text-center">Register</h1>
+             { step==1 && (
+               <>
+               <h2 className="text-3xl font-bold text-primary text-center">Register</h2>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="form-control">
                   <label className="input input-bordered flex items-center gap-2 bg-bgEnd">
@@ -49,43 +54,31 @@ export default function RegisterPage() {
                     </p>
                   )}
                 </div>
-                <div className="form-control">
-                  <label className="input input-bordered flex items-center bg-bgEnd  gap-2">
-                    <input
-                      type="password"
-                      className="grow"
-                      placeholder="password"
-                      {...register("password", {
-                        required: "Password is required",
-                      })}
-                    />
-                  </label>
-                  {errors.password && (
-                    <p className="text-red-500 text-sm">
-                      {errors.password.message}
-                    </p>
-                  )}
-                  <label className="label">
-                    <p className="text-textPrimary text-sm">
-                      Have an acount?
-                      <Link
-                        to={"/register"}
-                        className="link font-medium link-hover"
-                      >
-                        Login
-                      </Link>
-                    </p>
-                  </label>
-                </div>
                 <div className="form-control mt-3">
                   <button
-                    type="submit"
+                    type="button"
                     className="btn bg-secondary font-medium border-none text-white/90 hover:bg-secondary/10 hover:text-secondary hover:border hover:border-secondary"
+                    onClick={() => {
+                      setStep(2);
+                      toast.success("OTP sent to your phone number");
+                    }}
                   >
-                    Register
+                    Send OTP
                   </button>
                 </div>
               </form>
+              </>
+              )}
+             { step==2 && (
+              <>
+              <OTPVerification setStep={setStep}/>
+              </>
+              )}
+             { step==3 && (
+              <>
+              <RegistrationForm/>
+              </>
+              )}
             </div>
           </div>
         </div>

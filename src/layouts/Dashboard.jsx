@@ -1,6 +1,6 @@
 import { Outlet,NavLink } from "react-router-dom";
 import { ImStatsBars } from "react-icons/im";
-import { BiHome, BiSolidDonateBlood } from "react-icons/bi";
+import { BiSolidDonateBlood } from "react-icons/bi";
 import { FaDna } from "react-icons/fa";
 import { IoMdDoneAll } from "react-icons/io";
 import { TbDropletCancel } from "react-icons/tb";

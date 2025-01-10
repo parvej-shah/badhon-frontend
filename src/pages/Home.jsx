@@ -1,6 +1,11 @@
+import RegistrationForm from "../auth/RegistrationForm";
+
 /* Landing page */
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>Home
+
+      <RegistrationForm/>
+    </div>
   )
 }
