@@ -8,38 +8,38 @@ import Dashboard from "../layouts/Dashboard";
 import Requests from "../pages/Dashboards/Requests";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
         path: "/",
-        element: <Layout/>,
-        children:[
-            {
-                path:'/',
-                element:<Home/>
-            },
-            {
-                path:'/login',
-                element:<SignInPage/>
-            },
-            {
-                path:'/register',
-                element:<RegisterPage/>
-            },
-        ]
-    },
-    {
-        path:'/dashboard',
-        element:<Dashboard  />,
-        children:[
-            {
-                path:'/dashboard/all-requests',
-                element:<Requests/>
-            }
-        ]
-    },
-    {
-        path:'/*',
-        element:<ErrorPage/>
-    }
-    ]);
+        element: <Home />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "/dashboard/all-requests",
+            element: <Requests />,
+          },
+        ],
+      },
+      {
+        path: "/login",
+        element: <SignInPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+    ],
+  },
+  {
+    path: "/*",
+    element: <ErrorPage />,
+  },
+]);
 
 export default router;
