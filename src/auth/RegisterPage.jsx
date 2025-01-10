@@ -18,7 +18,7 @@ export default function RegisterPage() {
   },[])
   const onSubmit = (data) => {
     const {phone, password } = data;
-          toast.success("Login Successful!");
+          toast.success("Register Successful!");
           navigate(from || '/');
   };
   return (

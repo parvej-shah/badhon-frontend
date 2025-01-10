@@ -5,7 +5,7 @@ export default function Navbar() {
   const user = true;
   const navItems = [
     { label: "Home", link: "/" },
-    { label: "Dashboard", link: "/" },
+    { label: "Dashboard", link: "/dashboard/all-requests" },
     { label: "About Us", link: "/rooms" },
     { label: "Contact Us", link: "/my-bookings" },
   ];
